@@ -1,23 +1,14 @@
 {
-  "name": "package.json",
+  "name": "myflix-client",
   "version": "1.0.0",
-  "main": "src/index.html",
+  "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/johannesvw3/myFlix-client.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/johannesvw3/myFlix-client/issues"
-  },
-  "homepage": "https://github.com/johannesvw3/myFlix-client#readme",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
-  },
-  "description": ""
+  }
 }
