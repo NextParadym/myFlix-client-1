@@ -22927,8 +22927,7 @@ class MainView extends _reactDefault.default.Component {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 40
             },
-            __self: this,
-            children: "The list is empty!"
+            __self: this
         }));
         return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "main-view",
@@ -23040,6 +23039,7 @@ class MovieView extends _reactDefault.default.Component {
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
                         src: movie.ImagePath,
+                        crossorigin: "anonymous",
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 11
