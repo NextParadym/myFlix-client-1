@@ -1,9 +1,9 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import axios from 'axios';
+
 
 export default class MainView extends React.Component {
 
