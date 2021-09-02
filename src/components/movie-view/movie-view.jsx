@@ -4,6 +4,8 @@ import "./movie-view.scss";
 
 export class MovieView extends React.Component {
 
+  
+
   render() {
     const { movie, onBackClick } = this.props;
 
@@ -20,9 +22,22 @@ export class MovieView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{movie.Description}</span>
         </div>
+        <div className="movie-genre">
+          <span className="label">Genre: </span>
+          <span className="value">{movie.Genre.Name}</span>
+        </div>
+        <div className="movie-director">
+          <span className="label">Director: </span>
+          <span className="value">{movie.Director.Name}</span>
+        </div>
+        <div className="movie-actors">
+          <span className="label">Actors: </span>
+          <span className="value">{movie.Actors.map(actor => actor.Name).join(", ")}</span>
+        </div>
         <button onClick={() => { onBackClick(null); }}>Back</button>
 
       </div>
     );
   }
 }
+
