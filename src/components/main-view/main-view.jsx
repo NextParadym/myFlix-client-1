@@ -4,6 +4,7 @@ import axios from 'axios';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { RegistrationView } from '../registration-view/registration-view'
 
 
 export default class MainView extends React.Component {
@@ -34,6 +35,12 @@ export default class MainView extends React.Component {
       setSelectedMovie(newSelectedMovie) {
         this.setState({
           selectedMovie: newSelectedMovie
+        });
+      }
+
+      onRegistration(user) {
+        this.setState({
+          user,
         });
       }
 
