@@ -1,8 +1,67 @@
 .my-flix {
   color: #032d50;
 }
+
 .movie-poster img {
   height: 300px;
   width: 200px;
+}
+.app-container {
+  display: grid;
+  justify-content: center;
+  padding-bottom: 500px;
+}
+
+form {
+  margin-top: 50%;
+}
+
+.form-label {
+  margin-top: 20px;
+  height: 25px;
+  color: white;
+}
+
+.form-control {
+  width: 400px !important;
+}
+
+.btn {
+  padding-top: 10px;
+  margin-top: 30px;
+}
+.app-container {
+  background-image: linear-gradient(#0a081a, #a4a8b6);
+  height: auto;
+}
+
+.col-lg-3 {
+  margin-top: 5%;
+  height: 585px;
+  overflow: hidden;
+  z-index: 9;
+  transition: 0.4s ease-in-out;
+}
+.col-lg-3:hover, .col-lg-3:active {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.card-body {
+  color: white;
+  background-color: #0a081a;
+  height: 180px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.h5 {
+  font-size: 1.1rem !important;
+}
+
+.card-img {
+  min-height: 380px;
 }
 /*# sourceMappingURL=index.caa67093.css.map */
