@@ -1,0 +1,35 @@
+.app-container {
+    background-image: linear-gradient(rgb(10, 8, 26), rgb(164, 168, 182));
+    height: auto;
+}
+
+.col-lg-3 {
+    margin-top: 5%;
+    height: 585px;
+    overflow: hidden;
+    z-index: 9;
+    &:hover,
+    &:active {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+    transition: .4s ease-in-out; 
+  }
+
+  .card-body {
+        color: white;
+        background-color: rgb(10, 8, 26);
+        height: 180px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+  }
+
+  .h5 {
+      font-size: 1.1rem !important;
+  }
+
+  .card-img {
+      min-height: 380px;
+  }
