@@ -52,9 +52,28 @@ export default class MainView extends React.Component {
         });
       }
 
-      onLoggedIn(user) {
+      onLoggedIn(authData) {
+        console.log(authData);
         this.setState({
-          user
+          user: authData.user.Username
+        });
+
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('user', authData.user.Username);
+        this.getMovies(authData.token);
+      }
+
+      getMovies(token) {
+        axios.get('https://myflix-by-jop.herokuapp.com/movies', {
+          headers: { Authorization: `Bearer ${token}`}
+        })
+        .then(response => {
+          this.setState({
+            movies: response.data
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
         });
       }
 

@@ -22950,9 +22950,26 @@ class MainView extends _reactDefault.default.Component {
             user
         });
     }
-    onLoggedIn(user) {
+    onLoggedIn(authData) {
+        console.log(authData);
         this.setState({
-            user
+            user: authData.user.Username
+        });
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('user', authData.user.Username);
+        this.getMovies(authData.token);
+    }
+    getMovies(token) {
+        _axiosDefault.default.get('https://myflix-by-jop.herokuapp.com/movies', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                movies: response.data
+            });
+        }).catch(function(error) {
+            console.log(error);
         });
     }
     render() {
@@ -22963,7 +22980,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 69
+                lineNumber: 88
             },
             __self: this
         }));
@@ -22971,7 +22988,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 72
+                lineNumber: 91
             },
             __self: this
         }));
@@ -22979,7 +22996,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 76
+                lineNumber: 95
             },
             __self: this,
             children: [
@@ -22988,13 +23005,13 @@ class MainView extends _reactDefault.default.Component {
                     expand: "lg",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 77
+                        lineNumber: 96
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_containerDefault.default, {
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 78
+                            lineNumber: 97
                         },
                         __self: this,
                         children: [
@@ -23002,7 +23019,7 @@ class MainView extends _reactDefault.default.Component {
                                 href: "#home",
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 79
+                                    lineNumber: 98
                                 },
                                 __self: this,
                                 children: "React-Bootstrap"
@@ -23011,7 +23028,7 @@ class MainView extends _reactDefault.default.Component {
                                 "aria-controls": "basic-navbar-nav",
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 80
+                                    lineNumber: 99
                                 },
                                 __self: this
                             }),
@@ -23019,14 +23036,14 @@ class MainView extends _reactDefault.default.Component {
                                 id: "basic-navbar-nav",
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 81
+                                    lineNumber: 100
                                 },
                                 __self: this,
                                 children: /*#__PURE__*/ _jsxRuntime.jsxs(_navDefault.default, {
                                     className: "me-auto",
                                     __source: {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 82
+                                        lineNumber: 101
                                     },
                                     __self: this,
                                     children: [
@@ -23034,7 +23051,7 @@ class MainView extends _reactDefault.default.Component {
                                             href: "#home",
                                             __source: {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 83
+                                                lineNumber: 102
                                             },
                                             __self: this,
                                             children: "Home"
@@ -23043,7 +23060,7 @@ class MainView extends _reactDefault.default.Component {
                                             href: "#link",
                                             __source: {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 84
+                                                lineNumber: 103
                                             },
                                             __self: this,
                                             children: "Link"
@@ -23053,7 +23070,7 @@ class MainView extends _reactDefault.default.Component {
                                             id: "basic-nav-dropdown",
                                             __source: {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 85
+                                                lineNumber: 104
                                             },
                                             __self: this,
                                             children: [
@@ -23061,7 +23078,7 @@ class MainView extends _reactDefault.default.Component {
                                                     href: "#action/3.1",
                                                     __source: {
                                                         fileName: "src/components/main-view/main-view.jsx",
-                                                        lineNumber: 86
+                                                        lineNumber: 105
                                                     },
                                                     __self: this,
                                                     children: "Action"
@@ -23070,7 +23087,7 @@ class MainView extends _reactDefault.default.Component {
                                                     href: "#action/3.2",
                                                     __source: {
                                                         fileName: "src/components/main-view/main-view.jsx",
-                                                        lineNumber: 87
+                                                        lineNumber: 106
                                                     },
                                                     __self: this,
                                                     children: "Another action"
@@ -23079,7 +23096,7 @@ class MainView extends _reactDefault.default.Component {
                                                     href: "#action/3.3",
                                                     __source: {
                                                         fileName: "src/components/main-view/main-view.jsx",
-                                                        lineNumber: 88
+                                                        lineNumber: 107
                                                     },
                                                     __self: this,
                                                     children: "Something"
@@ -23087,7 +23104,7 @@ class MainView extends _reactDefault.default.Component {
                                                 /*#__PURE__*/ _jsxRuntime.jsx(_navDropdownDefault.default.Divider, {
                                                     __source: {
                                                         fileName: "src/components/main-view/main-view.jsx",
-                                                        lineNumber: 89
+                                                        lineNumber: 108
                                                     },
                                                     __self: this
                                                 }),
@@ -23095,7 +23112,7 @@ class MainView extends _reactDefault.default.Component {
                                                     href: "#action/3.4",
                                                     __source: {
                                                         fileName: "src/components/main-view/main-view.jsx",
-                                                        lineNumber: 90
+                                                        lineNumber: 109
                                                     },
                                                     __self: this,
                                                     children: "Separated link"
@@ -23112,7 +23129,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "justify-content-lg-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 100
+                        lineNumber: 119
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
@@ -23120,7 +23137,7 @@ class MainView extends _reactDefault.default.Component {
                         md: 6,
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 101
+                            lineNumber: 120
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -23130,7 +23147,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 102
+                                lineNumber: 121
                             },
                             __self: this
                         })
@@ -23139,7 +23156,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "justify-content-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 107
+                        lineNumber: 126
                     },
                     __self: this,
                     children: movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
@@ -23149,7 +23166,7 @@ class MainView extends _reactDefault.default.Component {
                             xs: 8,
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 109
+                                lineNumber: 128
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -23159,7 +23176,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 110
+                                    lineNumber: 129
                                 },
                                 __self: this
                             }, movie._id)
@@ -25996,6 +26013,8 @@ parcelHelpers.export(exports, "LoginView", ()=>LoginView
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _form = require("react-bootstrap/Form");
@@ -26012,12 +26031,20 @@ function LoginView(props) {
         e.preventDefault();
         console.log(username, password);
         // Send a request to the server for authentication, then call props.onLoggedIn(username)
-        props.onLoggedIn(username);
+        _axiosDefault.default.post('https://myflix-by-jop.herokuapp.com/login', {
+            Username: username,
+            Password: password
+        }).then((response)=>{
+            const data = response.data;
+            props.onLoggedIn(data);
+        }).catch((e1)=>{
+            console.log('User not found');
+        });
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 20
+            lineNumber: 31
         },
         __self: this,
         children: [
@@ -26025,14 +26052,14 @@ function LoginView(props) {
                 controlId: "formUsername",
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 21
+                    lineNumber: 32
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 22
+                            lineNumber: 33
                         },
                         __self: this,
                         children: "Username:"
@@ -26044,7 +26071,7 @@ function LoginView(props) {
                         ,
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 23
+                            lineNumber: 34
                         },
                         __self: this
                     })
@@ -26054,14 +26081,14 @@ function LoginView(props) {
                 controlId: "formPassword",
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 26
+                    lineNumber: 37
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 27
+                            lineNumber: 38
                         },
                         __self: this,
                         children: "Password:"
@@ -26073,7 +26100,7 @@ function LoginView(props) {
                         ,
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 28
+                            lineNumber: 39
                         },
                         __self: this
                     })
@@ -26085,7 +26112,7 @@ function LoginView(props) {
                 onClick: handleSubmit,
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 30
+                    lineNumber: 41
                 },
                 __self: this,
                 children: "Submit"
@@ -26110,7 +26137,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Form":"5ykgY","react-bootstrap/Button":"9CzHT","@parcel/transformer-js/src/esmodule-helpers.js":"eE9ga","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6W1Io","./login-view.scss":"lS4BK"}],"5ykgY":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Form":"5ykgY","react-bootstrap/Button":"9CzHT","./login-view.scss":"lS4BK","@parcel/transformer-js/src/esmodule-helpers.js":"eE9ga","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6W1Io","axios":"iYoWk"}],"5ykgY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _extends = require("@babel/runtime/helpers/esm/extends");
