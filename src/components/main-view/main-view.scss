@@ -6,8 +6,8 @@
 .col-lg-3 {
     margin-top: 5%;
     height: 585px;
+    max-height: 580px ;
     overflow: hidden;
-    z-index: 9;
     &:hover,
     &:active {
       transform: scale(1.1);
@@ -19,7 +19,7 @@
   .card-body {
         color: white;
         background-color: rgb(10, 8, 26);
-        height: 180px;
+        height: 170px;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -28,8 +28,10 @@
 
   .h5 {
       font-size: 1.1rem !important;
+      max-height: 10px;
   }
 
   .card-img {
-      min-height: 380px;
+      min-height: 370px;
+      max-height: 370px;
   }

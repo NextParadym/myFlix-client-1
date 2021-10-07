@@ -38,8 +38,8 @@ form {
 .col-lg-3 {
   margin-top: 5%;
   height: 585px;
+  max-height: 580px;
   overflow: hidden;
-  z-index: 9;
   transition: 0.4s ease-in-out;
 }
 .col-lg-3:hover, .col-lg-3:active {
@@ -50,7 +50,7 @@ form {
 .card-body {
   color: white;
   background-color: #0a081a;
-  height: 180px;
+  height: 170px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -59,9 +59,11 @@ form {
 
 .h5 {
   font-size: 1.1rem !important;
+  max-height: 10px;
 }
 
 .card-img {
-  min-height: 380px;
+  min-height: 370px;
+  max-height: 370px;
 }
 /*# sourceMappingURL=index.caa67093.css.map */
