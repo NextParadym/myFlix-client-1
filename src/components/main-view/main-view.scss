@@ -3,6 +3,10 @@
     height: auto;
 }
 
+#logout {
+    color: red;
+}
+
 .col-lg-3 {
     margin-top: 5%;
     height: 585px;
@@ -18,7 +22,7 @@
 
   .card-body {
         color: white;
-        background-color: rgb(10, 8, 26);
+        background-color: rgb(11, 11, 44);
         height: 170px;
         text-align: center;
         display: flex;
@@ -31,7 +35,7 @@
       max-height: 10px;
   }
 
-  .card-img {
+  .card-img-top {
       min-height: 370px;
-      max-height: 370px;
+      max-height: 350px;
   }

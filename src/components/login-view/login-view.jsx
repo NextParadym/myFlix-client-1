@@ -5,6 +5,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './login-view.scss';
 
+import {  BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
+
+
+
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -28,8 +32,11 @@ export function LoginView(props) {
 
 
   return (
+    <Router>
+
     <Form>
-      <Form.Group controlId="formUsername">
+    <h1 className="form-title">Login</h1>
+      <Form.Group controlId="form-Username">
         <Form.Label>Username:</Form.Label>
         <Form.Control type="text" placeholder="Enter Username" onChange={e => setUsername(e.target.value)} />
       </Form.Group>
@@ -38,10 +45,15 @@ export function LoginView(props) {
         <Form.Label>Password:</Form.Label>
         <Form.Control type="password" placeholder="Enter Password"  onChange={e => setPassword(e.target.value)} />
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
-      </Button>
+      <div className="buttons-login">
+      <Button variant="success link" type="submit" onClick={handleSubmit}>Submit</Button>
+      <Button onClick={() => {window.location.href="/register"}} variant="primary" type="button">Register</Button>
+      </div>
     </Form>
+    
+    
+
+    </Router>
   );
 }
 

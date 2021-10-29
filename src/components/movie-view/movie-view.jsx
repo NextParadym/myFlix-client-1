@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+
+import { Link } from "react-router-dom";
 
 import "./movie-view.scss";
+import { Navbar } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
 
-  
 
   render() {
     const { movie, onBackClick } = this.props;
-
     return (
+
       <div className="movie-view">
         <div className="movie-poster">
           <img src={movie.ImagePath} />
@@ -25,15 +28,20 @@ export class MovieView extends React.Component {
         </div>
         <div className="movie-genre">
           <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
+          <Link to={`/genres/${movie.Genre.Name}`} className="value">{movie.Genre.Name}</Link>
+          
         </div>
         <div className="movie-director">
           <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
+          <Link to={`/directors/${movie.Director.Name}`} className="value">{movie.Director.Name}</Link>
+
         </div>
         <div className="movie-actors">
           <span className="label">Actors: </span>
-          <span className="value">{movie.Actors.map(actor => actor.Name).join(", ")}</span>
+        
+
+          {movie.Actors.map((actor) => (<Link key={actor.Name} to={`/actors/${actor.Name}`} className="value">{actor.Name}
+          </Link>)).reduce((prev, curr) => [prev, ", ", curr])}
         </div>
         <button onClick={() => { onBackClick(null); }}>Back</button>
 
@@ -53,3 +61,5 @@ MovieView.propTypes = {
     Featured: PropTypes.bool.isRequired,
   }),
 };
+
+

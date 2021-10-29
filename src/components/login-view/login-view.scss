@@ -1,8 +1,11 @@
-
 .app-container {  
     display: grid;
     justify-content: center;
     padding-bottom: 500px;
+}
+
+.form-title {
+    color: white;
 }
 
 form {
@@ -22,4 +25,9 @@ form {
 .btn {
     padding-top: 10px;
     margin-top: 30px;
+}
+
+.buttons-login {
+    display: flex;
+    justify-content: space-evenly;
 }

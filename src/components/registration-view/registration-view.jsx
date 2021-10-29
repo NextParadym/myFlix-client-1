@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import axios from 'axios'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import {  BrowserRouter as Router, Route } from 'react-router-dom';
+
+import './registration-view.scss';
 
 
 export function RegistrationView(props) {
@@ -12,28 +18,57 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, name, password, email, birthdate);
-    props.onRegistration(username);
+    axios.post('https://myflix-by-jop.herokuapp.com/user', {
+      Username: username,
+      Name: name,
+      Password: password,
+      Email: email,
+      Birthdate: birthdate
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+    })
+    .catch(e => {
+      console.log('error registering the user')
+    });
   };
 
   return (
-    <form>
-      <label className="username">Username:
-      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label className="name">Name:
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      </label>
-      <label className="password">Password:
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <label className="email">E-mail:
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </label>
-      <label className="birthdate">Birth date:
-      <input type="date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} />
-      </label>
-      <button className="registerBtn" type="submit" onClick={handleSubmit}>Register </button>
-    </form>
+    <div className="registration">
+      <Router>
+        
+    <Form>
+    <h1 className="form-title">Register</h1>
+      <Form.Group controlId="registration-Username">
+       <Form.Label>Username:</Form.Label>
+       <Form.Control className="username" value={username} type="text" placeholder="Create Username" onChange={e => setUsername(e.target.value)}></Form.Control>
+      </Form.Group>
+      <Form.Group controlId="registration-Password">
+       <Form.Label>Password:</Form.Label>
+       <Form.Control className="password" value={password} type="text" placeholder="Create Password" onChange={e => setPassword(e.target.value)}></Form.Control>
+      </Form.Group>
+      <Form.Group controlId="registration-Name">
+       <Form.Label>Name:</Form.Label>
+       <Form.Control className="name" value={name} type="text" placeholder="Enter Name" onChange={e => setName(e.target.value)}></Form.Control>
+      </Form.Group>
+      <Form.Group controlId="registration-Email">
+       <Form.Label>Email:</Form.Label>
+       <Form.Control className="email" value={email} type="email" placeholder="Enter Email" onChange={e => setEmail(e.target.value)}></Form.Control>
+      </Form.Group>
+      <Form.Group controlId="registration-Birthdate">
+       <Form.Label>Birthday:</Form.Label>
+       <Form.Control className="birthday" value={birthdate} type="date" placeholder="Enter Birthday" onChange={e => setBirthdate(e.target.value)}></Form.Control>
+      </Form.Group>
+      
+      <div className="buttons-registration">
+      <Button variant="success link" className="registerBtn" type="submit" onClick={handleSubmit}>Register </Button>
+      <Button onClick={() => {window.location.href="/"}} variant="primary" type="button">Login</Button>
+      </div>
+    </Form>
+    </Router>
+  </div>
   );
 }
 
