@@ -40801,7 +40801,7 @@ class Navbar extends _reactDefault.default.Component {
                                         lineNumber: 45
                                     },
                                     __self: this,
-                                    children: "Account"
+                                    children: "My Account"
                                 }),
                                 /*#__PURE__*/ _jsxRuntime.jsx(_navDefault.default.Link, {
                                     id: "logout",

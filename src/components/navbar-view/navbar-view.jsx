@@ -42,7 +42,7 @@ export class Navbar extends React.Component {
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4">More Genres...</NavDropdown.Item>
         </NavDropdown>
-        <Nav.Link id="Account" href={profile}>Account</Nav.Link>
+        <Nav.Link id="Account" href={profile}>My Account</Nav.Link>
         <Nav.Link id="logout" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
       </Nav>
     </Navbar.Collapse>
