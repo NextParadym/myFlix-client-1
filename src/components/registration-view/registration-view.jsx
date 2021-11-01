@@ -13,17 +13,17 @@ export function RegistrationView(props) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [birthdate, setBirthdate] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, name, password, email, birthdate);
+    console.log(username, name, password, email, birthday);
     axios.post('https://myflix-by-jop.herokuapp.com/user', {
       Username: username,
       Name: name,
       Password: password,
       Email: email,
-      Birthdate: birthdate
+      Birthday: birthday
     })
     .then(response => {
       const data = response.data;
@@ -57,9 +57,9 @@ export function RegistrationView(props) {
        <Form.Label>Email:</Form.Label>
        <Form.Control className="email" value={email} type="email" placeholder="Enter Email" onChange={e => setEmail(e.target.value)}></Form.Control>
       </Form.Group>
-      <Form.Group controlId="registration-Birthdate">
+      <Form.Group controlId="registration-Birthday">
        <Form.Label>Birthday:</Form.Label>
-       <Form.Control className="birthday" value={birthdate} type="date" placeholder="Enter Birthday" onChange={e => setBirthdate(e.target.value)}></Form.Control>
+       <Form.Control className="birthday" value={birthday} type="date" placeholder="Enter Birthday" onChange={e => setBirthday(e.target.value)}></Form.Control>
       </Form.Group>
       
       <div className="buttons-registration">
@@ -78,7 +78,7 @@ RegistrationView.propTypes = {
     name: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    birthdate: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
   }),
   onRegistration: PropTypes.func.isRequired,
 };

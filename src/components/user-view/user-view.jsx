@@ -5,8 +5,19 @@ import './user-view.scss';
 
 
 export class Userview extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.state = {
+      username: null,
+      password: null,
+      email: null,
+      birthday: null,
+      favorites: ['movie'],
+    };
+  }
+
+  componentDidMount() {
+    this.props.getUser()
   }
 
   removeFavouriteMovie(_id) {
@@ -14,7 +25,7 @@ export class Userview extends React.Component {
     const user = localStorage.getItem('user');
 
     console.log(_id, '_id')
-    axios.delete(`https://myflix-by-jop.herokuapp.com/user/favorites/delete/${user}/movies/${movies._id}`, {
+    axios.delete(`https://myflix-by-jop.herokuapp.com/user/favorites/delete/${user}/movies/${_id}`, {
 
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -50,20 +61,52 @@ export class Userview extends React.Component {
           
       }
 
+      
+
+    
+    
+
    render() {
-    const { movies, user, username, email, password, birthday, favorites } = this.props;
+    const { movies, user, name, username, email, password, birthday, favorites } = this.props;
+
 
     return(
-      <Container className="User-view">
+      <Container className="UserView">
         <Row className="justify-content-md-center">
           <Col className="user-info">
+            <p>Name: {name}</p>
             <p>Username: {username}</p>
             <p>Password: *******</p>
             <p>Email: {email}</p>
             <p>Birthday: {birthday}</p>
           </Col>
         </Row>
-          
+          <Row>
+           <Card.Body> 
+              {favorites.length === 0 && <div className="text-center">Empty.</div>}
+                <Row className="favorites-movies ">
+                  {favorites.length > 0 &&
+                    movies.map((movie) => {
+                      if (movie._id === Favorites.find((fav) => fav === movie._id)) {
+                        return (
+                          <Col lg={4} key={movie._id}>
+                            <Card className="favorites-item card-content" >
+                              <Card.Img  className="movieCard" variant="top" src={movie.ImagePath} crossOrigin="anonymous" />
+                              <Card.Body>
+                                <Card.Title className="movie-card-title">{movie.title}</Card.Title>
+                                <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFavouriteMovie(movie._id)}>
+                                  Remove
+                                </Button>
+                              </Card.Body>
+                            </Card>
+                          </Col>
+                        )}
+                    })
+                  }
+                  </Row>
+              </Card.Body>
+               
+          </Row>
           <Row>
             <Col className="acc-btns mt-1">
               <Button size="md" variant="outline-danger" type="submit" ml="4" onClick={() => this.deleteUser()} >Delete Account</Button>

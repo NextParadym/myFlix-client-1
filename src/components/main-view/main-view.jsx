@@ -28,8 +28,10 @@ export default class MainView extends React.Component {
           movies: [],
           selectedMovie: null,
           user: null,
-          register: null
+          register: null,
         }
+
+        this.getUser = this.getUser.bind(this)
       }
 
       componentDidMount() {
@@ -50,12 +52,7 @@ export default class MainView extends React.Component {
         });
       }
 
-      onRegistration(user) {
-        console.log(user);
-        this.setState({
-          user: user,
-        });
-      }
+      
 
       onLoggedIn(authData) {
         console.log(authData);
@@ -90,15 +87,17 @@ export default class MainView extends React.Component {
         });
       }
 
-      getUser(token) {
-        const username = localStorage.getItem('user');
-        axios.get(`https://myflix-by-jop.herokuapp.com//user/${username}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+      getUser() {
+        const username = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
+        axios
+          .get(`https://myflix-by-jop.herokuapp.com/user/username/${username}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
           .then((response) => {
             this.setState({
-              username: response.data.Username,
               name: response.data.Name,
+              username: response.data.Username,
               password: response.data.Password,
               email: response.data.Email,
               birthday: response.data.Birthday,
@@ -108,14 +107,16 @@ export default class MainView extends React.Component {
           .catch(function (error) {
             console.log(error);
           });
-        }
+      }
 
 
       
 
       render() {
-        const { movies, user, username, password, email, birthday, favorites } = this.state;
-    
+        const { movies, name, user, username, password, email, birthday, favorites } = this.state;
+
+        
+
         return (
           
 
@@ -123,7 +124,7 @@ export default class MainView extends React.Component {
           
           <Route exact path="/" render={() => {
                 console.log('login')
-                if (user) return <Navbar></Navbar>
+                if (user) return <Navbar user={user}></Navbar>
                 
                  if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
                 
@@ -169,7 +170,7 @@ export default class MainView extends React.Component {
               );
               if (movies.length === 0) return <div className="main-view" />;
               return <Col md={8}>
-                <Navbar></Navbar>
+                <Navbar user={user} ></Navbar>
                 <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()}/>
               </Col>
               }}  />
@@ -185,7 +186,7 @@ export default class MainView extends React.Component {
               
               if (movies.length === 0) return <div className="main-view" />;
               return <Col md={8}>
-                <Navbar></Navbar>
+                <Navbar user={user}></Navbar>
                 <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()}/>
               </Col>
               }}  />
@@ -200,13 +201,13 @@ export default class MainView extends React.Component {
               
               if (movies.length === 0) return <div className="main-view" />;
               return <Col md={8}>
-                <Navbar></Navbar>
+                <Navbar user={user}></Navbar>
                 <Actorview actor={movies.find(m => m.Actor.Name === match.params.name).Actor} onBackClick={() => history.goBack()}/>
               </Col>
               }}  />
 
               {/* Path to Profile view  */}
-            <Route  path="/user/id/:id" render={() => {
+            <Route  path="/user" render={() => {
               if ( !user ) 
               return (
                 <Col>
@@ -217,15 +218,15 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col>
-                <Userview username={username} password={password} email={email} birthday={birthday} favorites={favorites} movies={movies} onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
+              <Navbar user={user}></Navbar>
+                <Userview 
+                username={username} password={password} email={email} name={name}
+                birthday={birthday} favorites={favorites}movies={movies}
+                getUser={this.getUser}
+                onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
               </Col>
               </>)
             }} /> 
-
-              
-              
-              
-    
             </Row>
             </div>
           </Router>
