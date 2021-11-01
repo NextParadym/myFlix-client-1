@@ -40667,7 +40667,6 @@ class Navbar extends _reactDefault.default.Component {
     };
     render() {
         const { user  } = this.props;
-        console.log(this.props);
         const movies = `/`;
         const profile = `/user/id/${user}`;
         return(/*#__PURE__*/ _jsxRuntime.jsx(_navbarDefault.default, {
@@ -40675,14 +40674,14 @@ class Navbar extends _reactDefault.default.Component {
             expand: "lg",
             __source: {
                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                lineNumber: 30
+                lineNumber: 29
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_containerDefault.default, {
                 className: "navbar-menu",
                 __source: {
                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                    lineNumber: 31
+                    lineNumber: 30
                 },
                 __self: this,
                 children: [
@@ -40690,7 +40689,7 @@ class Navbar extends _reactDefault.default.Component {
                         href: movies,
                         __source: {
                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                            lineNumber: 32
+                            lineNumber: 31
                         },
                         __self: this,
                         children: "myFlix"
@@ -40699,7 +40698,7 @@ class Navbar extends _reactDefault.default.Component {
                         "aria-controls": "basic-navbar-nav",
                         __source: {
                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                            lineNumber: 33
+                            lineNumber: 32
                         },
                         __self: this
                     }),
@@ -40707,14 +40706,14 @@ class Navbar extends _reactDefault.default.Component {
                         id: "basic-navbar-nav",
                         __source: {
                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                            lineNumber: 34
+                            lineNumber: 33
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsxs(_navDefault.default, {
                             className: "me-auto",
                             __source: {
                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                lineNumber: 35
+                                lineNumber: 34
                             },
                             __self: this,
                             children: [
@@ -40722,7 +40721,7 @@ class Navbar extends _reactDefault.default.Component {
                                     href: "",
                                     __source: {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 36
+                                        lineNumber: 35
                                     },
                                     __self: this,
                                     children: "Movies"
@@ -40731,7 +40730,7 @@ class Navbar extends _reactDefault.default.Component {
                                     href: "#link",
                                     __source: {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 37
+                                        lineNumber: 36
                                     },
                                     __self: this,
                                     children: "Actors"
@@ -40740,7 +40739,7 @@ class Navbar extends _reactDefault.default.Component {
                                     href: "#link",
                                     __source: {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 38
+                                        lineNumber: 37
                                     },
                                     __self: this,
                                     children: "Directors"
@@ -40750,7 +40749,7 @@ class Navbar extends _reactDefault.default.Component {
                                     id: "basic-nav-dropdown",
                                     __source: {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 39
+                                        lineNumber: 38
                                     },
                                     __self: this,
                                     children: [
@@ -40758,7 +40757,7 @@ class Navbar extends _reactDefault.default.Component {
                                             href: "genres/Adventure",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 40
+                                                lineNumber: 39
                                             },
                                             __self: this,
                                             children: "Adventure"
@@ -40767,7 +40766,7 @@ class Navbar extends _reactDefault.default.Component {
                                             href: "genres/Fantasy",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 41
+                                                lineNumber: 40
                                             },
                                             __self: this,
                                             children: "Fantasy"
@@ -40776,7 +40775,7 @@ class Navbar extends _reactDefault.default.Component {
                                             href: "genres/Fiction",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 42
+                                                lineNumber: 41
                                             },
                                             __self: this,
                                             children: "Fiction"
@@ -40784,7 +40783,7 @@ class Navbar extends _reactDefault.default.Component {
                                         /*#__PURE__*/ _jsxRuntime.jsx(_navDropdownDefault.default.Divider, {
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 43
+                                                lineNumber: 42
                                             },
                                             __self: this
                                         }),
@@ -40792,7 +40791,7 @@ class Navbar extends _reactDefault.default.Component {
                                             href: "#action/3.4",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 44
+                                                lineNumber: 43
                                             },
                                             __self: this,
                                             children: "More Genres..."
@@ -40804,7 +40803,7 @@ class Navbar extends _reactDefault.default.Component {
                                     href: profile,
                                     __source: {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 46
+                                        lineNumber: 45
                                     },
                                     __self: this,
                                     children: "My Account"
@@ -40816,7 +40815,7 @@ class Navbar extends _reactDefault.default.Component {
                                     },
                                     __source: {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 47
+                                        lineNumber: 46
                                     },
                                     __self: this,
                                     children: "Logout"
@@ -40861,9 +40860,7 @@ class Userview extends _reactDefault.default.Component {
             password: null,
             email: null,
             birthday: null,
-            favorites: [
-                'movie'
-            ]
+            favorites: []
         };
     }
     componentDidMount() {
@@ -40905,11 +40902,14 @@ class Userview extends _reactDefault.default.Component {
     }
     render() {
         const { movies , user , name , username , email , password , birthday , favorites  } = this.props;
+        console.log({
+            username
+        });
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             className: "UserView",
             __source: {
                 fileName: "src/components/user-view/user-view.jsx",
-                lineNumber: 74
+                lineNumber: 75
             },
             __self: this,
             children: [
@@ -40917,21 +40917,21 @@ class Userview extends _reactDefault.default.Component {
                     className: "justify-content-md-center",
                     __source: {
                         fileName: "src/components/user-view/user-view.jsx",
-                        lineNumber: 75
+                        lineNumber: 76
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Col, {
                         className: "user-info",
                         __source: {
                             fileName: "src/components/user-view/user-view.jsx",
-                            lineNumber: 76
+                            lineNumber: 77
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 77
+                                    lineNumber: 78
                                 },
                                 __self: this,
                                 children: [
@@ -40942,7 +40942,7 @@ class Userview extends _reactDefault.default.Component {
                             /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 78
+                                    lineNumber: 79
                                 },
                                 __self: this,
                                 children: [
@@ -40953,7 +40953,7 @@ class Userview extends _reactDefault.default.Component {
                             /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 79
+                                    lineNumber: 80
                                 },
                                 __self: this,
                                 children: "Password: *******"
@@ -40961,7 +40961,7 @@ class Userview extends _reactDefault.default.Component {
                             /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 80
+                                    lineNumber: 81
                                 },
                                 __self: this,
                                 children: [
@@ -40972,7 +40972,7 @@ class Userview extends _reactDefault.default.Component {
                             /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 81
+                                    lineNumber: 82
                                 },
                                 __self: this,
                                 children: [
@@ -40986,111 +40986,21 @@ class Userview extends _reactDefault.default.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/user-view/user-view.jsx",
-                        lineNumber: 84
+                        lineNumber: 85
                     },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
-                        __source: {
-                            fileName: "src/components/user-view/user-view.jsx",
-                            lineNumber: 85
-                        },
-                        __self: this,
-                        children: [
-                            favorites.length === 0 && /*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                className: "text-center",
-                                __source: {
-                                    fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 86
-                                },
-                                __self: this,
-                                children: "Empty."
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
-                                className: "favorites-movies ",
-                                __source: {
-                                    fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 87
-                                },
-                                __self: this,
-                                children: favorites.length > 0 && movies.map((movie)=>{
-                                    if (movie._id === Favorites.find((fav)=>fav === movie._id
-                                    )) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                                        lg: 4,
-                                        __source: {
-                                            fileName: "src/components/user-view/user-view.jsx",
-                                            lineNumber: 92
-                                        },
-                                        __self: this,
-                                        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card, {
-                                            className: "favorites-item card-content",
-                                            __source: {
-                                                fileName: "src/components/user-view/user-view.jsx",
-                                                lineNumber: 93
-                                            },
-                                            __self: this,
-                                            children: [
-                                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Img, {
-                                                    className: "movieCard",
-                                                    variant: "top",
-                                                    src: movie.ImagePath,
-                                                    crossOrigin: "anonymous",
-                                                    __source: {
-                                                        fileName: "src/components/user-view/user-view.jsx",
-                                                        lineNumber: 94
-                                                    },
-                                                    __self: this
-                                                }),
-                                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Card.Body, {
-                                                    __source: {
-                                                        fileName: "src/components/user-view/user-view.jsx",
-                                                        lineNumber: 95
-                                                    },
-                                                    __self: this,
-                                                    children: [
-                                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
-                                                            className: "movie-card-title",
-                                                            __source: {
-                                                                fileName: "src/components/user-view/user-view.jsx",
-                                                                lineNumber: 96
-                                                            },
-                                                            __self: this,
-                                                            children: movie.title
-                                                        }),
-                                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                                                            size: "sm",
-                                                            className: "profile-button remove-favorite",
-                                                            variant: "danger",
-                                                            value: movies.title,
-                                                            onClick: ()=>this.removeFavouriteMovie(movie._id)
-                                                            ,
-                                                            __source: {
-                                                                fileName: "src/components/user-view/user-view.jsx",
-                                                                lineNumber: 97
-                                                            },
-                                                            __self: this,
-                                                            children: "Remove"
-                                                        })
-                                                    ]
-                                                })
-                                            ]
-                                        })
-                                    }, movie._id));
-                                })
-                            })
-                        ]
-                    })
+                    __self: this
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/user-view/user-view.jsx",
-                        lineNumber: 110
+                        lineNumber: 111
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                         className: "acc-btns mt-1",
                         __source: {
                             fileName: "src/components/user-view/user-view.jsx",
-                            lineNumber: 111
+                            lineNumber: 112
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
@@ -41102,7 +41012,7 @@ class Userview extends _reactDefault.default.Component {
                             ,
                             __source: {
                                 fileName: "src/components/user-view/user-view.jsx",
-                                lineNumber: 112
+                                lineNumber: 113
                             },
                             __self: this,
                             children: "Delete Account"

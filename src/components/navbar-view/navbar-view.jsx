@@ -21,7 +21,6 @@ export class Navbar extends React.Component {
 
     render() {
         const { user } = this.props
-        console.log(this.props)
         const movies = `/`;
         const profile = `/user/id/${user}`;
     

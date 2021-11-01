@@ -12,7 +12,7 @@ export class Userview extends React.Component {
       password: null,
       email: null,
       birthday: null,
-      favorites: ['movie'],
+      favorites: [],
     };
   }
 
@@ -69,6 +69,7 @@ export class Userview extends React.Component {
    render() {
     const { movies, user, name, username, email, password, birthday, favorites } = this.props;
 
+    console.log({username})
 
     return(
       <Container className="UserView">
@@ -82,7 +83,7 @@ export class Userview extends React.Component {
           </Col>
         </Row>
           <Row>
-           <Card.Body> 
+           {/* <Card.Body> 
               {favorites.length === 0 && <div className="text-center">Empty.</div>}
                 <Row className="favorites-movies ">
                   {favorites.length > 0 &&
@@ -105,7 +106,7 @@ export class Userview extends React.Component {
                   }
                   </Row>
               </Card.Body>
-               
+                */}
           </Row>
           <Row>
             <Col className="acc-btns mt-1">
