@@ -39925,11 +39925,11 @@ var _registrationViewScss = require("./registration-view.scss");
 var _s = $RefreshSig$();
 function RegistrationView(props) {
     _s();
-    const [username, setUsername] = _react.useState("");
-    const [name, setName] = _react.useState("");
-    const [password, setPassword] = _react.useState("");
-    const [email, setEmail] = _react.useState("");
-    const [birthday, setBirthday] = _react.useState("");
+    const [username, setUsername] = useState("");
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [birthday, setBirthday] = useState("");
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(username, name, password, email, birthday);
@@ -40900,6 +40900,52 @@ class Userview extends _reactDefault.default.Component {
             });
         }
     }
+    editUser(e) {
+        e.preventDefault();
+        const user = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        _axiosDefault.default.put(`https://myflix-by-jop.herokuapp.com/user/update/${user}`, {
+            name: this.state.Name,
+            username: this.state.Username,
+            password: this.state.Password,
+            email: this.state.Email,
+            birthday: this.state.Birthday
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                name: response.data.Name,
+                username: response.data.Username,
+                password: response.data.Password,
+                email: response.data.Email,
+                birthday: response.data.Birthday
+            });
+            localStorage.setItem('user', this.state.Username);
+            const data = response.data;
+            console.log(data);
+            console.log(this.state.Username);
+            alert("Profile updated.");
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+    setName(value) {
+        this.state.Name = value;
+    }
+    setUsername(value) {
+        this.state.Username = value;
+    }
+    setPassword(value) {
+        this.state.Password = value;
+    }
+    setEmail(value) {
+        this.state.Email = value;
+    }
+    setBirthday(value) {
+        this.state.Birthday = value;
+    }
     render() {
         const { movies , user , name , username , email , password , birthday , favorites  } = this.props;
         console.log({
@@ -40909,7 +40955,7 @@ class Userview extends _reactDefault.default.Component {
             className: "UserView",
             __source: {
                 fileName: "src/components/user-view/user-view.jsx",
-                lineNumber: 75
+                lineNumber: 129
             },
             __self: this,
             children: [
@@ -40917,21 +40963,37 @@ class Userview extends _reactDefault.default.Component {
                     className: "justify-content-md-center",
                     __source: {
                         fileName: "src/components/user-view/user-view.jsx",
-                        lineNumber: 76
+                        lineNumber: 130
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Col, {
                         className: "user-info",
                         __source: {
                             fileName: "src/components/user-view/user-view.jsx",
-                            lineNumber: 77
+                            lineNumber: 131
                         },
                         __self: this,
                         children: [
-                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                            /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                className: "profileContent",
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 78
+                                    lineNumber: 132
+                                },
+                                __self: this,
+                                children: /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 133
+                                    },
+                                    __self: this,
+                                    children: "MY PROFILE"
+                                })
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsxs("h4", {
+                                __source: {
+                                    fileName: "src/components/user-view/user-view.jsx",
+                                    lineNumber: 135
                                 },
                                 __self: this,
                                 children: [
@@ -40939,10 +41001,10 @@ class Userview extends _reactDefault.default.Component {
                                     name
                                 ]
                             }),
-                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                            /*#__PURE__*/ _jsxRuntime.jsxs("h4", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 79
+                                    lineNumber: 136
                                 },
                                 __self: this,
                                 children: [
@@ -40950,18 +41012,18 @@ class Userview extends _reactDefault.default.Component {
                                     username
                                 ]
                             }),
-                            /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                            /*#__PURE__*/ _jsxRuntime.jsx("h4", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 80
+                                    lineNumber: 137
                                 },
                                 __self: this,
                                 children: "Password: *******"
                             }),
-                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                            /*#__PURE__*/ _jsxRuntime.jsxs("h4", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 81
+                                    lineNumber: 138
                                 },
                                 __self: this,
                                 children: [
@@ -40969,10 +41031,10 @@ class Userview extends _reactDefault.default.Component {
                                     email
                                 ]
                             }),
-                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
+                            /*#__PURE__*/ _jsxRuntime.jsxs("h4", {
                                 __source: {
                                     fileName: "src/components/user-view/user-view.jsx",
-                                    lineNumber: 82
+                                    lineNumber: 139
                                 },
                                 __self: this,
                                 children: [
@@ -40986,21 +41048,258 @@ class Userview extends _reactDefault.default.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/user-view/user-view.jsx",
-                        lineNumber: 85
+                        lineNumber: 142
                     },
                     __self: this
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                    className: "profileInformation",
+                    __source: {
+                        fileName: "src/components/user-view/user-view.jsx",
+                        lineNumber: 168
+                    },
+                    __self: this,
+                    children: [
+                        /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                            className: "profileContent",
+                            __source: {
+                                fileName: "src/components/user-view/user-view.jsx",
+                                lineNumber: 169
+                            },
+                            __self: this,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                __source: {
+                                    fileName: "src/components/user-view/user-view.jsx",
+                                    lineNumber: 170
+                                },
+                                __self: this,
+                                children: /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 171
+                                    },
+                                    __self: this,
+                                    children: this.state.Name
+                                })
+                            })
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                            className: "profileContent",
+                            __source: {
+                                fileName: "src/components/user-view/user-view.jsx",
+                                lineNumber: 174
+                            },
+                            __self: this,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                __source: {
+                                    fileName: "src/components/user-view/user-view.jsx",
+                                    lineNumber: 176
+                                },
+                                __self: this,
+                                children: /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 177
+                                    },
+                                    __self: this,
+                                    children: this.state.Username
+                                })
+                            })
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                            className: "profileContent",
+                            __source: {
+                                fileName: "src/components/user-view/user-view.jsx",
+                                lineNumber: 180
+                            },
+                            __self: this,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                __source: {
+                                    fileName: "src/components/user-view/user-view.jsx",
+                                    lineNumber: 181
+                                },
+                                __self: this,
+                                children: /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 182
+                                    },
+                                    __self: this,
+                                    children: this.state.Email
+                                })
+                            })
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                            className: "profileContent",
+                            __source: {
+                                fileName: "src/components/user-view/user-view.jsx",
+                                lineNumber: 185
+                            },
+                            __self: this,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                __source: {
+                                    fileName: "src/components/user-view/user-view.jsx",
+                                    lineNumber: 187
+                                },
+                                __self: this,
+                                children: /*#__PURE__*/ _jsxRuntime.jsx("p", {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 188
+                                    },
+                                    __self: this,
+                                    children: this.state.Birthday
+                                })
+                            })
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                            __source: {
+                                fileName: "src/components/user-view/user-view.jsx",
+                                lineNumber: 191
+                            },
+                            __self: this,
+                            children: /*#__PURE__*/ _jsxRuntime.jsx("h4", {
+                                __source: {
+                                    fileName: "src/components/user-view/user-view.jsx",
+                                    lineNumber: 192
+                                },
+                                __self: this,
+                                children: "EDIT PROFILE"
+                            })
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
+                            className: "formDisplay",
+                            onSubmit: (e)=>this.editUser(e)
+                            ,
+                            __source: {
+                                fileName: "src/components/user-view/user-view.jsx",
+                                lineNumber: 194
+                            },
+                            __self: this,
+                            children: [
+                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 195
+                                    },
+                                    __self: this,
+                                    children: [
+                                        "Username",
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                            type: "text",
+                                            name: "Username",
+                                            placeholder: "New Username",
+                                            onChange: (e)=>this.setUsername(e.target.value)
+                                            ,
+                                            required: true,
+                                            __source: {
+                                                fileName: "src/components/user-view/user-view.jsx",
+                                                lineNumber: 197
+                                            },
+                                            __self: this
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 199
+                                    },
+                                    __self: this,
+                                    children: [
+                                        "Password",
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                            type: "password",
+                                            name: "Password",
+                                            placeholder: "New Password",
+                                            onChange: (e)=>this.setPassword(e.target.value)
+                                            ,
+                                            required: true,
+                                            __source: {
+                                                fileName: "src/components/user-view/user-view.jsx",
+                                                lineNumber: 201
+                                            },
+                                            __self: this
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 204
+                                    },
+                                    __self: this,
+                                    children: [
+                                        "Email Address",
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                            type: "email",
+                                            name: "Email",
+                                            placeholder: "New Email",
+                                            onChange: (e)=>this.setEmail(e.target.value)
+                                            ,
+                                            required: true,
+                                            __source: {
+                                                fileName: "src/components/user-view/user-view.jsx",
+                                                lineNumber: 206
+                                            },
+                                            __self: this
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 209
+                                    },
+                                    __self: this,
+                                    children: [
+                                        "Birthday",
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                            type: "date",
+                                            name: "Birthday",
+                                            onChange: (e)=>this.setBirthday(e.target.value)
+                                            ,
+                                            __source: {
+                                                fileName: "src/components/user-view/user-view.jsx",
+                                                lineNumber: 211
+                                            },
+                                            __self: this
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    className: "marginSpacer",
+                                    __source: {
+                                        fileName: "src/components/user-view/user-view.jsx",
+                                        lineNumber: 214
+                                    },
+                                    __self: this,
+                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                        variant: "success",
+                                        type: "submit",
+                                        __source: {
+                                            fileName: "src/components/user-view/user-view.jsx",
+                                            lineNumber: 215
+                                        },
+                                        __self: this,
+                                        children: "Update"
+                                    })
+                                })
+                            ]
+                        })
+                    ]
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                     __source: {
                         fileName: "src/components/user-view/user-view.jsx",
-                        lineNumber: 111
+                        lineNumber: 219
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                         className: "acc-btns mt-1",
                         __source: {
                             fileName: "src/components/user-view/user-view.jsx",
-                            lineNumber: 112
+                            lineNumber: 220
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
@@ -41012,7 +41311,7 @@ class Userview extends _reactDefault.default.Component {
                             ,
                             __source: {
                                 fileName: "src/components/user-view/user-view.jsx",
-                                lineNumber: 113
+                                lineNumber: 221
                             },
                             __self: this,
                             children: "Delete Account"

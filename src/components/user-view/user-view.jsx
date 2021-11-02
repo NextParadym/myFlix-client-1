@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Button, Card, Col, Form, Row, Container } from 'react-bootstrap';
 import './user-view.scss';
@@ -61,6 +61,60 @@ export class Userview extends React.Component {
           
       }
 
+      editUser(e) {
+        e.preventDefault();
+        const user = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+    
+        axios.put(`https://myflix-by-jop.herokuapp.com/user/update/${user}`,
+          {
+            name: this.state.Name,
+            username: this.state.Username,
+            password: this.state.Password,
+            email: this.state.Email,
+            birthday: this.state.Birthday
+          },
+          { headers: { Authorization: `Bearer ${token}` }
+          })
+          .then((response) => {
+            this.setState({
+              name: response.data.Name,
+              username: response.data.Username,
+              password: response.data.Password,
+              email: response.data.Email,
+              birthday: response.data.Birthday
+            });
+            localStorage.setItem('user', this.state.Username);
+            const data = response.data;
+            console.log(data);
+            console.log(this.state.Username);
+            alert("Profile updated.");
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      }
+
+      setName(value) {
+        this.state.Name = value;
+      }
+
+      setUsername(value) {
+        this.state.Username = value;
+      }
+    
+      setPassword(value) {
+        this.state.Password = value;
+      }
+    
+      setEmail(value) {
+        this.state.Email = value;
+      }
+    
+      setBirthday(value) {
+        this.state.Birthday = value;
+      }
+
       
 
     
@@ -75,11 +129,14 @@ export class Userview extends React.Component {
       <Container className="UserView">
         <Row className="justify-content-md-center">
           <Col className="user-info">
-            <p>Name: {name}</p>
-            <p>Username: {username}</p>
-            <p>Password: *******</p>
-            <p>Email: {email}</p>
-            <p>Birthday: {birthday}</p>
+          <div className="profileContent">
+            <h2>MY PROFILE</h2>
+          </div>
+            <h4>Name: {name}</h4>
+            <h4>Username: {username}</h4>
+            <h4>Password: *******</h4>
+            <h4>Email: {email}</h4>
+            <h4>Birthday: {birthday}</h4>
           </Col>
         </Row>
           <Row>
@@ -108,6 +165,57 @@ export class Userview extends React.Component {
               </Card.Body>
                 */}
           </Row>
+          <div className="profileInformation">
+          <div className="profileContent">
+            <div>
+              <p>{this.state.Name}</p>
+            </div>
+          </div>
+          <div className="profileContent">
+
+            <div>
+              <p>{this.state.Username}</p>
+            </div>
+          </div>
+          <div className="profileContent">
+            <div>
+              <p>{this.state.Email}</p>
+            </div>
+          </div>
+          <div className="profileContent">
+
+            <div>
+              <p>{this.state.Birthday}</p>
+            </div>
+          </div>
+          <div>
+            <h4>EDIT PROFILE</h4>
+          </div>
+          <Form className="formDisplay" onSubmit={(e) => this.editUser(e)}>
+            <Form.Group>
+              Username
+              <Form.Control type='text' name="Username" placeholder="New Username" onChange={(e) => this.setUsername(e.target.value)} required />
+            </Form.Group>
+            <Form.Group>
+              Password
+              <Form.Control type='password' name="Password" placeholder="New Password" onChange={(e) => this.setPassword(e.target.value)} required />
+
+            </Form.Group>
+            <Form.Group>
+              Email Address
+              <Form.Control type='email' name="Email" placeholder="New Email" onChange={(e) => this.setEmail(e.target.value)} required />
+
+            </Form.Group>
+            <Form.Group>
+              Birthday
+              <Form.Control type='date' name="Birthday" onChange={(e) => this.setBirthday(e.target.value)} />
+
+            </Form.Group>
+            <div className="marginSpacer">
+              <Button variant="success" type="submit" >Update</Button>
+            </div>
+          </Form>
+          </div>
           <Row>
             <Col className="acc-btns mt-1">
               <Button size="md" variant="outline-danger" type="submit" ml="4" onClick={() => this.deleteUser()} >Delete Account</Button>

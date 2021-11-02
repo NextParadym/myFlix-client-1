@@ -101,7 +101,7 @@ export default class MainView extends React.Component {
               password: response.data.Password,
               email: response.data.Email,
               birthday: response.data.Birthday,
-              favorites: response.data.Favorites,
+              favorites: response.data.Favorites
             });
           })
           .catch(function (error) {
