@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './login-view.scss';
 
-import {  BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
+import {  BrowserRouter as Router } from 'react-router-dom';
 
 
 
@@ -43,7 +43,7 @@ export function LoginView(props) {
 
       <Form.Group controlId="formPassword">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" placeholder="Enter Password"  onChange={e => setPassword(e.target.value)} />
+        <Form.Control type="password" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} />
       </Form.Group>
       <div className="buttons-login">
       <Button onClick={() => {window.location.href="/register"}} variant="primary" type="button">Register</Button>
