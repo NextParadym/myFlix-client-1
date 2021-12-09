@@ -155,6 +155,7 @@ export default class MainView extends React.Component {
 
               <Route path="/movies/:movieId" render={({ match, history }) => {
                 return <Col md={8}>
+                  <Navbar user={user}></Navbar>
                   <MovieView movie={movies.find(m => m._id === match.params.movieId)} 
                   onBackClick={() => history.goBack()} />
                 </Col>
@@ -223,7 +224,7 @@ export default class MainView extends React.Component {
                 username={username} password={password} email={email} name={name}
                 birthday={birthday} favorites={favorites}movies={movies}
                 getUser={this.getUser}
-                onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
+                onBackClick={() => history.goBack()} removeMovie={(_id) => this.onRemoveFavorite(_id)} />
               </Col>
               </>)
             }} /> 

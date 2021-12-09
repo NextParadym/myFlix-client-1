@@ -1,14 +1,39 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 
 import { Link } from "react-router-dom";
 
 import "./movie-view.scss";
-import { Navbar } from 'react-bootstrap';
+
+
+
 
 export class MovieView extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+}
+
+
+
+addFavoriteMovie() {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+
+    axios.post(`https://myflix-by-jop.herokuapp.com/user/favorites/${username}/movies/${this.props.movie._id}`, {}, {
+        headers: { Authorization: `Bearer ${token}` },
+        method: 'POST'
+    })
+        .then(response => {
+            alert(`Added to Favorites List`)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+};
 
   render() {
     const { movie, onBackClick } = this.props;
@@ -44,6 +69,7 @@ export class MovieView extends React.Component {
           </Link>)).reduce((prev, curr) => [prev, ", ", curr])}
         </div>
         <button onClick={() => { onBackClick(null); }}>Back</button>
+        <Button variant="outline-primary" className="btn-outline-primary" value={movie._id} onClick={(e) => this.addFavoriteMovie(e, movie)}>Add to Favorites</Button>
 
       </div>
     );
